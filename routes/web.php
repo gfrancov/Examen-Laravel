@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CasalsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[CasalsController::class, 'listarCasals']);
+Route::get('/nou-casal',[CasalsController::class, 'formNewCasal']);
+Route::post('/casal-creat',[CasalsController::class, 'newCasal'])->name('newCasal');
+Route::get('/casal/{casal?}',[CasalsController::class, 'casalInfo']);
+Route::post('/casal-modificat',[CasalsController::class, 'modifyCasal'])->name('modifyCasal');
+Route::get('/esborrar-casal/{casal?}',[CasalsController::class, 'esborrarCasal']);
