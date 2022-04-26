@@ -38,6 +38,13 @@ class CasalsController extends Controller
 
     public function newCasal(Request $request) {
 
+        $request->validate([
+            'nom' => 'required',
+            'inici' => 'required|date',
+            'final' => 'required|date',
+            'places' => 'required'
+        ]);
+
         Casals::create([
             'nom' => $request->input('nom'),
             'data_inici' => $request->input('inici'),
@@ -66,6 +73,13 @@ class CasalsController extends Controller
     }
 
     public function modifyCasal(Request $request) {
+
+        $request->validate([
+            'nom' => 'required',
+            'inici' => 'required|date',
+            'final' => 'required|date',
+            'places' => 'required'
+        ]);
 
         $casal = Casals::find( $request->input('id') );
         $casal->nom = $request->input('nom');

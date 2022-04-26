@@ -9,22 +9,29 @@ use App\Http\Controllers\CasalsController;
 </div>
 
 <form method="POST" action="{{route('newCasal')}}">
+    @if ($errors->any())
+    <ul>
+        @foreach($errors->all() as $error)
+            <li>{{$error}}</li>
+        @endforeach
+    </ul>
+    @endif
     @csrf
     <div class="form-camp">
         <label for="nom">Nom del Casal:</label>
-        <input type="text" name="nom" placeholder="Nom" id="nom" required />
+        <input type="text" name="nom" placeholder="Nom" id="nom" />
     </div>
     <div class="form-camp">
         <label for="inici">Data inici:</label>
-        <input type="date" name="inici" id="inici" required />
+        <input type="date" name="inici" id="inici" />
     </div>
     <div class="form-camp">
         <label for="final">Data final:</label>
-        <input type="date" name="final" id="final" required />
+        <input type="date" name="final" id="final" />
     </div>
     <div class="form-camp">
         <label for="places">Número de places:</label>
-        <input type="number" name="places" placeholder="Places" id="places" required />
+        <input type="number" name="places" placeholder="Places" id="places" />
     </div>
     <div class="form-camp">
         <label for="ciutat">Ciutat:</label>
