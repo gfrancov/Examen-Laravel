@@ -40,8 +40,8 @@ class CasalsController extends Controller
 
         $request->validate([
             'nom' => 'required',
-            'inici' => 'required|date',
-            'final' => 'required|date',
+            'inici' => 'required|date|before:final',
+            'final' => 'required|date|after:inici',
             'places' => 'required'
         ]);
 
@@ -76,8 +76,8 @@ class CasalsController extends Controller
 
         $request->validate([
             'nom' => 'required',
-            'inici' => 'required|date',
-            'final' => 'required|date',
+            'inici' => 'required|date|before:final',
+            'final' => 'required|date|after:inici',
             'places' => 'required'
         ]);
 
